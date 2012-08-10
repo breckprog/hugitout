@@ -6,7 +6,14 @@ here = os.path.abspath(os.path.dirname(__file__))
 README = open(os.path.join(here, 'README.txt')).read()
 CHANGES = open(os.path.join(here, 'CHANGES.txt')).read()
 
-requires = ['pyramid', 'WebError']
+requires = [
+    'pyramid',
+    'waitress',
+    'pyramid_debugtoolbar',
+    'pyramid_zodbconn',
+    'pyramid_tm',
+    'substanced',
+    ]
 
 setup(name='hugitout',
       version='0.0',
@@ -21,7 +28,7 @@ setup(name='hugitout',
       author='',
       author_email='',
       url='',
-      keywords='web pyramid pylons jquery mobile',
+      keywords='hugs',
       packages=find_packages(),
       include_package_data=True,
       zip_safe=False,
@@ -32,6 +39,5 @@ setup(name='hugitout',
       [paste.app_factory]
       main = hugitout:main
       """,
-      paster_plugins=['pyramid'],
       )
 
