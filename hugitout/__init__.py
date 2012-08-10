@@ -1,10 +1,11 @@
 from pyramid.config import Configurator
-from hugitout.views import www
+
+from .site import Site
+from .views import www
 
 def main(global_config, **settings):
-    """ This function returns a Pyramid WSGI application.
-    """
-    config = Configurator(settings=settings)
+    config = Configurator(settings=settings, root_factory=Site.root_factory)
+    config.include('substanced')
     config.add_route('languages', '/language/{name}')
     config.add_view(www, context='pyramid.httpexceptions.HTTPNotFound')
     config.scan('hugitout')
